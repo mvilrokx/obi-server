@@ -1,6 +1,7 @@
 SITE
   remote: http://community.opscode.com/api/v1
   specs:
+    apt (1.9.2)
     chef_gem (0.1.0)
 
 GIT
@@ -12,5 +13,6 @@ GIT
       chef_gem (>= 0.0.0)
 
 DEPENDENCIES
+  apt (>= 0)
   rvm (>= 0)
 
