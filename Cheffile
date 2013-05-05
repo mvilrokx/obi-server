@@ -1,12 +1,21 @@
 #!/usr/bin/env ruby
 #^syntax detection
 
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+# AFTER YOU CHANGE THIS FILE, RUN:
+# librarian-chef install
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
 site 'http://community.opscode.com/api/v1'
 
 # cookbook 'chef-client'
 cookbook 'apt'
 
 # cookbook 'apache2', '>= 1.0.0'
+cookbook 'build-essential'
+cookbook 'nginx'
+cookbook 'git'
 
 cookbook 'rvm',
   :git => 'https://github.com/fnichol/chef-rvm'
