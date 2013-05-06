@@ -67,13 +67,13 @@ Vagrant.configure("2") do |config|
 #    chef.add_recipe "nginx"
 
     # install rvm
-    # chef.add_recipe "rvm::vagrant"
+    chef.add_recipe "rvm::vagrant"
     chef.add_recipe "rvm::system"
     # chef.add_recipe "rvm::user"
   #   chef.add_role "web"
 
     # FINALLY deploy the application!!!
-    # chef.add_recipe "obi-server"
+    chef.add_recipe "obi-server"
 
     # You may also specify custom JSON attributes:
     chef.json = {

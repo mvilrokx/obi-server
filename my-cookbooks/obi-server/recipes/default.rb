@@ -10,7 +10,7 @@
 
 gem_package 'bundler' do
   version '1.3.5'
-  gem_binary '/usr/local/bin/gem'
+  # gem_binary '/usr/local/bin/gem'
   # gem_binary '/opt/vagrant_ruby/bin/gem'
   gem_binary '/usr/local/rvm/rubies/ruby-1.9.3-p392/bin/gem'
   options '--no-ri --no-rdoc'
