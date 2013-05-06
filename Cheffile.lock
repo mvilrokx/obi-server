@@ -1,6 +1,14 @@
 SITE
   remote: http://community.opscode.com/api/v1
   specs:
+    apache2 (1.6.2)
+    application (2.0.2)
+    application_ruby (1.1.2)
+      apache2 (>= 0.0.0)
+      application (>= 0.0.0)
+      passenger_apache2 (>= 0.0.0)
+      runit (~> 1.0)
+      unicorn (>= 0.0.0)
     apt (1.9.2)
     build-essential (1.4.0)
     chef_gem (0.1.0)
@@ -19,9 +27,15 @@ SITE
       runit (>= 0.0.0)
       yum (>= 0.0.0)
     ohai (1.1.8)
+    passenger_apache2 (2.0.0)
+      apache2 (>= 1.0.4)
+      build-essential (>= 0.0.0)
+    ruby_build (0.7.2)
     runit (1.1.4)
       build-essential (>= 0.0.0)
       yum (>= 0.0.0)
+    unicorn (1.2.2)
+    user (0.3.0)
     windows (1.8.10)
       chef_handler (>= 0.0.0)
     yum (2.2.0)
@@ -35,9 +49,12 @@ GIT
       chef_gem (>= 0.0.0)
 
 DEPENDENCIES
+  application_ruby (>= 0)
   apt (>= 0)
   build-essential (>= 0)
   git (>= 0)
   nginx (>= 0)
+  ruby_build (>= 0)
   rvm (>= 0)
+  user (>= 0)
 

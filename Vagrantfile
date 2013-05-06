@@ -54,29 +54,38 @@ Vagrant.configure("2") do |config|
   # some recipes and/or roles.
   #
   config.vm.provision :chef_solo do |chef|
-  #   chef.cookbooks_path = "../my-recipes/cookbooks"
+    chef.cookbooks_path = ["cookbooks", "my-cookbooks"]
   #   chef.roles_path = "../my-recipes/roles"
   #   chef.data_bags_path = "../my-recipes/data_bags"
 
     # ensure the local APT package cache is up to date
-    chef.add_recipe "build-essential"
-    chef.add_recipe "nginx"
-    chef.add_recipe "git"
     chef.add_recipe "apt"
+    chef.add_recipe "build-essential"
+    chef.add_recipe "user"
+    chef.add_recipe "git"
+    # chef.add_recipe "application_ruby::passenger_apache2"
+#    chef.add_recipe "nginx"
 
     # install rvm
-    chef.add_recipe "rvm::vagrant"
-    # chef.add_recipe "rvm::system"
-    chef.add_recipe "rvm::user"
+    # chef.add_recipe "rvm::vagrant"
+    chef.add_recipe "rvm::system"
+    # chef.add_recipe "rvm::user"
   #   chef.add_role "web"
-  #
+
+    # FINALLY deploy the application!!!
+    # chef.add_recipe "obi-server"
+
     # You may also specify custom JSON attributes:
     chef.json = {
       :rvm => {
-        :user_installs => [{
-          :user => "vagrant",
-          :default_ruby => "ruby-1.9.3"
-        }]
+        :default_ruby => "ruby-1.9.3-p392",
+        # :user_installs => [{
+        #   :user => "vagrant",
+        #   :default_ruby => "ruby-1.9.3"
+        # },{
+        #   :user => "deployer",
+        #   :default_ruby => "ruby-1.9.3"
+        # }]
       }
     }
   end

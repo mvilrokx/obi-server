@@ -11,9 +11,10 @@ site 'http://community.opscode.com/api/v1'
 
 # cookbook 'chef-client'
 cookbook 'apt'
-
-# cookbook 'apache2', '>= 1.0.0'
 cookbook 'build-essential'
+cookbook 'user'
+cookbook 'ruby_build'
+cookbook 'application_ruby'
 cookbook 'nginx'
 cookbook 'git'
 
