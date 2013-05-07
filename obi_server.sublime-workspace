@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"pro",
+				"protected"
+			],
+			[
+				"exe",
+				"execute_sql_query"
+			],
+			[
 				"re",
 				"response"
 			],
@@ -83,22 +91,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "Gemfile",
-			"settings":
-			{
-				"buffer_size": 131,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "obi_server.rb",
-			"settings":
-			{
-				"buffer_size": 1403,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -196,6 +188,24 @@
 	},
 	"file_history":
 	[
+		"/Users/mvilrokx/Projects/Sinatra/obi_server/my-cookbooks/sinatra-app/recipes/setup.rb",
+		"/Users/mvilrokx/Projects/Sinatra/obi_server/my-cookbooks/sinatra-app/recipes/default.rb",
+		"/Users/mvilrokx/Projects/Sinatra/obi_server/my-cookbooks/sinatra-app/templates/default/unicorn.erb",
+		"/Users/mvilrokx/Projects/Sinatra/obi_server/my-cookbooks/sinatra-app/templates/default/nginx.erb",
+		"/Users/mvilrokx/Projects/Sinatra/obi_server/Cheffile",
+		"/Users/mvilrokx/Projects/Sinatra/obi_server/my-cookbooks/obi-server/recipes/default.rb",
+		"/Users/mvilrokx/Projects/Sinatra/obi_server/obi_server.rb",
+		"/Users/mvilrokx/Projects/Sinatra/obi_server/Gemfile",
+		"/Users/mvilrokx/Projects/Sinatra/obi_server/Vagrantfile",
+		"/Users/mvilrokx/Projects/Sinatra/obi_server/.gitignore",
+		"/Users/mvilrokx/Projects/Sinatra/obi_server/my-cookbooks/sinatra-app/attributes/default.rb",
+		"/Users/mvilrokx/Projects/Sinatra/obi_server/config/README",
+		"/Users/mvilrokx/Projects/Sinatra/obi_server/app/models/query.rb",
+		"/Users/mvilrokx/Projects/Sinatra/obi_server/app/models/session.rb",
+		"/Users/mvilrokx/Projects/Sinatra/obi_server/config.ru",
+		"/Users/mvilrokx/Projects/Sinatra/obi_server/.ruby-version",
+		"/Users/mvilrokx/Projects/Sinatra/obi_server/.ruby-gemset",
+		"/Users/mvilrokx/Projects/Sinatra/obi_server/.rvmrc",
 		"/Users/mvilrokx/Projects/Sinatra/bi/views/status_404.haml",
 		"/Users/mvilrokx/Projects/Sinatra/bi/mytestapp.rb",
 		"/Users/mvilrokx/Projects/Sinatra/bi/sass/screen.scss",
@@ -305,18 +315,7 @@
 		"/Users/mvilrokx/Projects/Rails/capture/.rvmrc",
 		"/Users/mvilrokx/Projects/Rails/capture/config/environments/production.rb",
 		"/Users/mvilrokx/Projects/Rails/capture/public/index.html",
-		"/Users/mvilrokx/Projects/Rails/barrelrun/app/views/awards/index.html.haml",
-		"/Users/mvilrokx/Projects/Rails/barrelrun/barrelrun.TODO",
-		"/Users/mvilrokx/Projects/Rails/barrelrun/test.rb",
-		"/Users/mvilrokx/Dropbox/Public/Websites/GA/hello_analytics_api_v3.html",
-		"/Users/mvilrokx/Dropbox/Public/Websites/GA/hello_analytics_api_v3_auth.js",
-		"/Users/mvilrokx/Dropbox/Public/Websites/GA/hello_analytics_api_v3.js",
-		"/Users/mvilrokx/Dropbox/Public/Websites/GA/slice_it.js",
-		"/Users/mvilrokx/Projects/Rails/barrelrun/app/views/application/_nav.html.haml",
-		"/Users/mvilrokx/Projects/Rails/barrelrun/app/assets/stylesheets/partials/_footer.scss",
-		"/Users/mvilrokx/Dropbox/Public/Websites/bookmarklets/removediv.js",
-		"/Users/mvilrokx/Projects/Rails/barrelrun/.rvmrc",
-		"/Users/mvilrokx/Projects/Rails/barrelrun/config/database.yml"
+		"/Users/mvilrokx/Projects/Rails/barrelrun/app/views/awards/index.html.haml"
 	],
 	"find":
 	{
@@ -335,6 +334,13 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"         ",
+			"rails-lastmile",
+			"rails",
+			"\"\n",
+			"forwa",
+			"host",
+			"logon",
 			"require",
 			"ap ",
 			"Username",
@@ -476,61 +482,8 @@
 	"groups":
 	[
 		{
-			"selected": 1,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "Gemfile",
-					"settings":
-					{
-						"buffer_size": 131,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "obi_server.rb",
-					"settings":
-					{
-						"buffer_size": 1403,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1403,
-								1403
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
 			]
 		}
 	],

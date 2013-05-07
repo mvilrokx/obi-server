@@ -1,6 +1,5 @@
 $:<<::File.dirname(__FILE__)
 
-# require 'sinatra'
 require 'sinatra/base'
 require "json"
 require 'savon'
@@ -11,7 +10,6 @@ require 'app/models/session'
 
 class ObiServer < Sinatra::Base
 
-  # set :show_exceptions, false
 
   MAJOR_VERSION = 0
   MINOR_VERSION = 1
@@ -23,6 +21,7 @@ class ObiServer < Sinatra::Base
 
   # configure :production do
   #   use Throttler, :min => 300.0, :cache => Memcached.new, :key_prefix => :throttle
+  # 	disable :show_exceptions
   # end
 
 	configure do
@@ -34,6 +33,10 @@ class ObiServer < Sinatra::Base
 		content_type :json
 	end
 
+	# Allows a user to logon.
+	# Creates a session which will be used to stash the OBI server and the user
+	# An optional callback URI can be passed
+	# We also return the session ID in json
 	post '/logon' do
 		# strip last '/' if there is one
 		session[:hostname] = params[:hostname].sub!(/\/?$/, '') if params[:hostname]
@@ -46,10 +49,13 @@ class ObiServer < Sinatra::Base
 
 	end
 
+	# Allows a user to logon. Clears the session
 	post '/logoff' do
 		Session.logoff(session)
 	end
 
+	# Allows an authenticated user to execute a query on the OBI server.
+	# Will return the results of the query as json
 	post '/query' do
 		protected!
 
