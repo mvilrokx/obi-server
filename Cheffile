@@ -13,9 +13,11 @@ site 'http://community.opscode.com/api/v1'
 cookbook 'apt'
 cookbook 'build-essential'
 cookbook 'user'
-cookbook 'ruby_build'
-cookbook 'application_ruby'
+# cookbook 'ruby_build'
+# cookbook 'application_ruby'
+# cookbook 'application_nginx'
 cookbook 'nginx'
+cookbook 'unicorn'
 cookbook 'git'
 
 cookbook 'rvm',

@@ -17,6 +17,7 @@ Vagrant.configure("2") do |config|
   # within the machine from a port on the host machine. In the example below,
   # accessing "localhost:8080" will access port 80 on the guest machine.
   config.vm.network :forwarded_port, guest: 4567, host: 4567, auto_correct: true
+  config.vm.network :forwarded_port, guest: 9292, host: 9292, auto_correct: true
   config.vm.network :forwarded_port, guest: 80, host: 8080, auto_correct: true
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
@@ -64,7 +65,7 @@ Vagrant.configure("2") do |config|
     chef.add_recipe "user"
     chef.add_recipe "git"
     # chef.add_recipe "application_ruby::passenger_apache2"
-#    chef.add_recipe "nginx"
+    chef.add_recipe "nginx"
 
     # install rvm
     chef.add_recipe "rvm::vagrant"
@@ -73,10 +74,15 @@ Vagrant.configure("2") do |config|
   #   chef.add_role "web"
 
     # FINALLY deploy the application!!!
-    chef.add_recipe "obi-server"
+    # chef.add_recipe "obi-server"
+    chef.add_recipe "sinatra-app"
 
     # You may also specify custom JSON attributes:
     chef.json = {
+      'sinatra-app' => {
+         'app_dir' => '/vagrant',
+         'ruby_version' => '1.9.3-p392'
+      },
       :rvm => {
         :default_ruby => "ruby-1.9.3-p392",
         # :user_installs => [{
@@ -85,9 +91,17 @@ Vagrant.configure("2") do |config|
         # },{
         #   :user => "deployer",
         #   :default_ruby => "ruby-1.9.3"
-        # }]
+        # }],
+        :global_gems => [
+          { 'name'    => 'bundler' }
+        ]
       }
     }
   end
+
+  config.vm.provision :shell, :inline => "cd /vagrant && rvm gemset use default && bundle install && ps -p `cat /var/run/unicorn/master.pid` &>/dev/null || bundle exec unicorn -c /etc/unicorn.cfg -D --env development"
+
+  # THIS WORKS FINE BUT I WANT TO USE NGINX + UNICORN!!!
+  # config.vm.provision :shell, :inline => 'cd /vagrant && rvm gemset use default && bundle install && bundle exec rackup -D'
 
 end

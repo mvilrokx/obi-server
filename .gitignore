@@ -12,6 +12,8 @@ test/tmp
 test/version_tmp
 tmp
 cookbooks
+.ruby-gemset
+cookie.txt
 
 # YARD artifacts
 .yardoc

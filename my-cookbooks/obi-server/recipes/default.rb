@@ -35,7 +35,16 @@ application 'obi-server' do
   rails do
     bundler true
   end
-  unicorn do
-    worker_processes 2
+
+  # passenger_apache2 do
+  # end
+
+  # unicorn do
+  #   worker_processes 2
+  # end
+
+  nginx_load_balancer do
+    # only_if { node['roles'].include?('my-app_load_balancer') }
   end
+
 end
