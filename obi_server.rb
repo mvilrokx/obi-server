@@ -17,6 +17,7 @@ class ObiServer < Sinatra::Base
 
   configure :production, :development do
     enable :logging
+    disable :protection
   end
 
   # configure :production do
@@ -39,27 +40,27 @@ class ObiServer < Sinatra::Base
 	# We also return the session ID in json
 	post '/logon' do
 		# strip last '/' if there is one
-		session[:hostname] = params[:hostname].sub!(/\/?$/, '') if params[:hostname]
+		# session[:hostname] = params[:hostname].sub!(/\/?$/, '') if params[:hostname]
 
-		responder(Session.logon(params, session)) do |r|
+		responder(Session.logon(params)) do |r|
 			session[:bi_session_token] = r.body[:logon_result][:session_id]
-			redirect params[:callback] if params[:callback]
-			{:bi_session_token => session[:bi_session_token]}.to_json
+			# redirect params[:callback] if params[:callback]
+			{:bi_session_token => r.body[:logon_result][:session_id], :hostname => params[:hostname]}.to_json
 		end
 
 	end
 
 	# Allows a user to logon. Clears the session
 	post '/logoff' do
-		Session.logoff(session)
+		Session.logoff(params)
 	end
 
 	# Allows an authenticated user to execute a query on the OBI server.
 	# Will return the results of the query as json
 	post '/query' do
-		protected!
+		# protected!
 
-		responder(Query.execute_sql_query(params,session)) do |r|
+		responder(Query.execute_sql_query(params, session)) do |r|
 			parser = Nori.new()
 			parser.parse(r.body[:execute_sql_query_result][:return][:rowset])["rowset"]["Row"].to_json
 		end
@@ -71,13 +72,13 @@ class ObiServer < Sinatra::Base
       return MAJOR_VERSION == nums[0].to_i && MINOR_VERSION >= nums[1].to_i
     end
 
-	  def logged_in?
-	  	session.has_key?(:bi_session_token)
-	  end
+	  # def logged_in?
+	  # 	session.has_key?(:bi_session_token)
+	  # end
 
-	  def protected!
-	  	halt [ 401, 'Not Authorized' ] unless logged_in?
-	  end
+	  # def protected!
+	  # 	halt [ 401, 'Not Authorized' ] unless logged_in?
+	  # end
   end
 
   before VERSION_REGEX do

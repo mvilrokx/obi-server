@@ -8,8 +8,8 @@ class Query
 
   def self.execute_sql_query(params, session)
 		client ssl_verify_mode: :none,
-		                  wsdl: "#{session[:hostname]}/analytics-ws/saw.dll/wsdl/v7",
-		              endpoint: "#{session[:hostname]}/analytics-ws/saw.dll?SoapImpl=xmlViewService"
+		                  wsdl: "#{params[:hostname]}/analytics-ws/saw.dll/wsdl/v7",
+		              endpoint: "#{params[:hostname]}/analytics-ws/saw.dll?SoapImpl=xmlViewService"
 
     super( message: {
 			sql!: params[:sql],
@@ -21,7 +21,7 @@ class Query
 				presentation_info: params[:presentation_info] || "?",
 				type: params[:type] || "?"
 			},
-			session_iD: session[:bi_session_token]
+			session_iD: params[:bi_session_token] || session[:bi_session_token]
 		})
 	rescue Savon::SOAPFault => error
 	  error.to_hash[:fault]

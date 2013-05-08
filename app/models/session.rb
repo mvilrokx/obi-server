@@ -5,20 +5,20 @@ class Session
 
 	operations :logon, :logoff
 
-  def self.logon(params, session)
+  def self.logon(params)
 		client ssl_verify_mode: :none,
-		                  wsdl: "#{session[:hostname]}/analytics-ws/saw.dll/wsdl/v7"
+		                  wsdl: "#{params[:hostname]}/analytics-ws/saw.dll/wsdl/v7"
 
     super( message: { name: params[:username], password: params[:password] })
 	rescue Savon::SOAPFault => error
 	  error.to_hash[:fault]
   end
 
-  def self.logoff(session)
+  def self.logoff(params)
 		client ssl_verify_mode: :none,
-		                  wsdl: "#{session[:hostname]}/analytics-ws/saw.dll/wsdl/v7"
+		                  wsdl: "#{params[:hostname]}/analytics-ws/saw.dll/wsdl/v7"
 
-    super( message: { session_iD: session[:bi_session_token] })
+    super( message: { session_iD: params[:bi_session_token] })
     session.clear
 
 	rescue Savon::SOAPFault => error
