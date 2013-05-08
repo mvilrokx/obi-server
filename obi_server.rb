@@ -55,6 +55,13 @@ class ObiServer < Sinatra::Base
 		Session.logoff(params)
 	end
 
+	# Allows a user to logon. Clears the session
+	post '/get_cur_user' do
+		responder(Session.get_cur_user(params)) do |r|
+			{:user_fullname => r.body[:get_cur_user_result][:return]}.to_json
+		end
+	end
+
 	# Allows an authenticated user to execute a query on the OBI server.
 	# Will return the results of the query as json
 	post '/query' do

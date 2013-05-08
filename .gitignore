@@ -1,4 +1,5 @@
 *.gem
+*.box
 *.rbc
 .bundle
 .config
