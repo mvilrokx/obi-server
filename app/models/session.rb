@@ -29,7 +29,7 @@ class Session
 		                  wsdl: "#{params[:hostname]}/analytics-ws/saw.dll/wsdl/v7"
 
     super( message: { session_iD: params[:bi_session_token] })
-    session.clear
+    # session.clear
 
 	rescue Savon::SOAPFault => error
 	  error.to_hash[:fault]

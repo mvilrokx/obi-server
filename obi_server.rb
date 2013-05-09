@@ -52,7 +52,10 @@ class ObiServer < Sinatra::Base
 
 	# Allows a user to logon. Clears the session
 	post '/logoff' do
-		Session.logoff(params)
+		responder(Session.logoff(params)) do |r|
+			session.clear
+			{:status => "ok"}.to_json
+		end
 	end
 
 	# Allows a user to logon. Clears the session

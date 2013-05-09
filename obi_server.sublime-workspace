@@ -95,7 +95,7 @@
 			"file": "obi_server.rb",
 			"settings":
 			{
-				"buffer_size": 2751,
+				"buffer_size": 3022,
 				"line_ending": "Unix"
 			}
 		},
@@ -103,7 +103,7 @@
 			"file": "app/models/session.rb",
 			"settings":
 			{
-				"buffer_size": 653,
+				"buffer_size": 944,
 				"line_ending": "Unix"
 			}
 		},
@@ -507,7 +507,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -515,15 +515,15 @@
 					"file": "obi_server.rb",
 					"settings":
 					{
-						"buffer_size": 2751,
+						"buffer_size": 3022,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1681,
-								1681
+								1989,
+								1989
 							]
 						],
 						"settings":
@@ -619,7 +619,7 @@
 							"syntax": "Packages/Ruby/Ruby.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 720.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -629,15 +629,15 @@
 					"file": "app/models/session.rb",
 					"settings":
 					{
-						"buffer_size": 653,
+						"buffer_size": 944,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								188,
-								218
+								677,
+								677
 							]
 						],
 						"settings":
@@ -750,8 +750,8 @@
 						"selection":
 						[
 							[
-								1009,
-								1009
+								923,
+								923
 							]
 						],
 						"settings":
