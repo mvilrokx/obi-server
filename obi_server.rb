@@ -77,6 +77,19 @@ class ObiServer < Sinatra::Base
 
 	end
 
+	# Allows an authenticated user to execute a query on the OBI server.
+	# Will return the results of the query as json
+	post '/xml_query' do
+		# protected!
+		puts params
+		puts session
+		responder(Query.execute_xml_query(params, session)) do |r|
+			parser = Nori.new()
+			parser.parse(r.body[:execute_xml_query_result][:return][:rowset])["rowset"]["Row"].to_json
+		end
+
+	end
+
   helpers do
     def version_compatible?(nums)
       return MAJOR_VERSION == nums[0].to_i && MINOR_VERSION >= nums[1].to_i
