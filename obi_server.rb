@@ -81,8 +81,7 @@ class ObiServer < Sinatra::Base
 	# Will return the results of the query as json
 	post '/xml_query' do
 		# protected!
-		puts params
-		puts session
+
 		responder(Query.execute_xml_query(params, session)) do |r|
 			parser = Nori.new()
 			parser.parse(r.body[:execute_xml_query_result][:return][:rowset])["rowset"]["Row"].to_json
