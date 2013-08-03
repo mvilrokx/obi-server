@@ -8,8 +8,8 @@ class Query
 
   def self.execute_sql_query(params, session)
 		client ssl_verify_mode: :none,
-		                  wsdl: "#{params[:hostname]}/analytics-ws/saw.dll/wsdl/v7",
-		              endpoint: "#{params[:hostname]}/analytics-ws/saw.dll?SoapImpl=xmlViewService"
+		                  wsdl: "#{params[:hostname] || session[:hostname]}/analytics-ws/saw.dll/wsdl/v7",
+		              endpoint: "#{params[:hostname] || session[:hostname]}/analytics-ws/saw.dll?SoapImpl=xmlViewService"
 
     super( message: {
 			sql!: params[:sql],
@@ -29,8 +29,8 @@ class Query
 
   def self.execute_xml_query(params, session)
 		client ssl_verify_mode: :none,
-		                  wsdl: "#{params[:hostname]}/analytics-ws/saw.dll/wsdl/v7",
-		              endpoint: "#{params[:hostname]}/analytics-ws/saw.dll?SoapImpl=xmlViewService"
+		                  wsdl: "#{params[:hostname] || session[:hostname]}/analytics-ws/saw.dll/wsdl/v7",
+		              endpoint: "#{params[:hostname] || session[:hostname]}/analytics-ws/saw.dll?SoapImpl=xmlViewService"
 
     super( message: {
     	report:{

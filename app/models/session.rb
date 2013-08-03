@@ -14,21 +14,21 @@ class Session
 	  error.to_hash[:fault]
   end
 
-  def self.get_cur_user(params)
+  def self.get_cur_user(params, session)
 		client ssl_verify_mode: :none,
-		                  wsdl: "#{params[:hostname]}/analytics-ws/saw.dll/wsdl/v7"
+		                  wsdl: "#{params[:hostname] || session[:hostname]}/analytics-ws/saw.dll/wsdl/v7"
 
-    super( message: { session_iD: params[:bi_session_token] })
+    super( message: { session_iD: params[:bi_session_token] || session[:bi_session_token] })
 
 	rescue Savon::SOAPFault => error
 	  error.to_hash[:fault]
   end
 
-  def self.logoff(params)
+  def self.logoff(params, session)
 		client ssl_verify_mode: :none,
-		                  wsdl: "#{params[:hostname]}/analytics-ws/saw.dll/wsdl/v7"
+		                  wsdl: "#{params[:hostname] || session[:hostname]}/analytics-ws/saw.dll/wsdl/v7"
 
-    super( message: { session_iD: params[:bi_session_token] })
+    super( message: { session_iD: params[:bi_session_token] || session[:bi_session_token] })
     # session.clear
 
 	rescue Savon::SOAPFault => error

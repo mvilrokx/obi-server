@@ -7,12 +7,13 @@ require 'nori'
 
 require 'app/models/query'
 require 'app/models/session'
+require 'app/models/metadata'
 
 class ObiServer < Sinatra::Base
 
 
   MAJOR_VERSION = 0
-  MINOR_VERSION = 1
+  MINOR_VERSION = 2
   VERSION_REGEX = %r{/api/v(\d)\.(\d)}
 
   configure :production, :development do
@@ -40,7 +41,7 @@ class ObiServer < Sinatra::Base
 	# We also return the session ID in json
 	post '/logon' do
 		# strip last '/' if there is one
-		# session[:hostname] = params[:hostname].sub!(/\/?$/, '') if params[:hostname]
+		session[:hostname] = params[:hostname].sub!(/\/?$/, '') if params[:hostname]
 
 		responder(Session.logon(params)) do |r|
 			session[:bi_session_token] = r.body[:logon_result][:session_id]
@@ -50,17 +51,17 @@ class ObiServer < Sinatra::Base
 
 	end
 
-	# Allows a user to logon. Clears the session
+	# Allows a user to logoff. Clears the session
 	post '/logoff' do
-		responder(Session.logoff(params)) do |r|
+		responder(Session.logoff(params, session)) do |r|
 			session.clear
 			{:status => "ok"}.to_json
 		end
 	end
 
-	# Allows a user to logon. Clears the session
+	# Returns currently logged on user
 	post '/get_cur_user' do
-		responder(Session.get_cur_user(params)) do |r|
+		responder(Session.get_cur_user(params, session)) do |r|
 			{:user_fullname => r.body[:get_cur_user_result][:return]}.to_json
 		end
 	end
@@ -85,6 +86,45 @@ class ObiServer < Sinatra::Base
 		responder(Query.execute_xml_query(params, session)) do |r|
 			parser = Nori.new()
 			parser.parse(r.body[:execute_xml_query_result][:return][:rowset])["rowset"]["Row"].to_json
+		end
+
+	end
+
+	# Allows an authenticated user to execute a query on the OBI server.
+	# Will return the results of the query as json
+	get '/xml_query' do
+		# protected!
+
+		responder(Query.execute_xml_query(params, session)) do |r|
+			parser = Nori.new()
+			parser.parse(r.body[:execute_xml_query_result][:return][:rowset])["rowset"]["Row"].to_json
+		end
+
+	end
+
+	get '/subject_areas/:subject_area_name/tables/:table_name' do
+		# protected!
+
+		responder(Metadata.describe_table(params, session)) do |r|
+			r.body[:describe_table_result].to_json
+		end
+
+	end
+
+	get '/subject_areas/:subject_area_name' do
+		# protected!
+
+		responder(Metadata.describe_subject_area(params, session)) do |r|
+			r.body[:describe_subject_area_result][:subject_area].to_json
+		end
+
+	end
+
+	get '/subject_areas' do
+		# protected!
+
+		responder(Metadata.get_subject_areas(params, session)) do |r|
+			r.body[:get_subject_areas_result][:subject_area].to_json
 		end
 
 	end

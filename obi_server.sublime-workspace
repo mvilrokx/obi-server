@@ -95,7 +95,7 @@
 			"file": "obi_server.rb",
 			"settings":
 			{
-				"buffer_size": 3022,
+				"buffer_size": 3715,
 				"line_ending": "Unix"
 			}
 		},
@@ -111,7 +111,7 @@
 			"file": "app/models/query.rb",
 			"settings":
 			{
-				"buffer_size": 1009,
+				"buffer_size": 1817,
 				"line_ending": "Unix"
 			}
 		}
@@ -212,6 +212,7 @@
 	},
 	"file_history":
 	[
+		"/Users/mvilrokx/Dropbox/Public/Websites/obi-d3js/index.html",
 		"/Users/mvilrokx/Projects/Sinatra/obi_server/my-cookbooks/sinatra-app/recipes/setup.rb",
 		"/Users/mvilrokx/Projects/Sinatra/obi_server/my-cookbooks/sinatra-app/recipes/default.rb",
 		"/Users/mvilrokx/Projects/Sinatra/obi_server/my-cookbooks/sinatra-app/templates/default/unicorn.erb",
@@ -338,8 +339,7 @@
 		"/Users/mvilrokx/Projects/Rails/capture/config/database.yml",
 		"/Users/mvilrokx/Projects/Rails/capture/.rvmrc",
 		"/Users/mvilrokx/Projects/Rails/capture/config/environments/production.rb",
-		"/Users/mvilrokx/Projects/Rails/capture/public/index.html",
-		"/Users/mvilrokx/Projects/Rails/barrelrun/app/views/awards/index.html.haml"
+		"/Users/mvilrokx/Projects/Rails/capture/public/index.html"
 	],
 	"find":
 	{
@@ -507,7 +507,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -515,15 +515,15 @@
 					"file": "obi_server.rb",
 					"settings":
 					{
-						"buffer_size": 3022,
+						"buffer_size": 3715,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1989,
-								1989
+								2688,
+								2688
 							]
 						],
 						"settings":
@@ -619,7 +619,7 @@
 							"syntax": "Packages/Ruby/Ruby.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 941.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -743,15 +743,15 @@
 					"file": "app/models/query.rb",
 					"settings":
 					{
-						"buffer_size": 1009,
+						"buffer_size": 1817,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								923,
-								923
+								1104,
+								1104
 							]
 						],
 						"settings":
